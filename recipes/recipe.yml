@@ -308,10 +308,6 @@ modules:
       - dnf5 versionlock clear
       - dnf5 clean all
 
-- type: script
-  snippets:
-    - echo 'force_drivers+=" amdgpu "' > /etc/dracut.conf.d/amdgpu.conf
-
   # enable systemd services
   - type: systemd
     system:
@@ -320,6 +316,7 @@ modules:
         - systemd-timesyncd.service
         - systemd-resolved.service
         - uupd.timer
+        - rechunker-group-fix.service
       disabled:
         - rpm-ostree-countme.timer
       masked:
