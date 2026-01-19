@@ -254,28 +254,6 @@ modules:
         - yelp-libs
         - yelp-xsl
 
-  # get some system files from bluefin. gum is required which is installed on previous step
-  - type: copy
-    from: ghcr.io/projectbluefin/common:latest
-    src: /system_files/shared/usr/bin/luks*
-    dest: /usr/bin
-  - type: copy
-    from: ghcr.io/projectbluefin/common:latest
-    src: /system_files/shared/usr/lib/dracut/fido*
-    dest: /usr/lib/dracut
-  - type: copy
-    from: ghcr.io/projectbluefin/common:latest
-    src: /system_files/shared/usr/lib/udev
-    dest: /usr/lib/udev
-  - type: copy
-    from: ghcr.io/projectbluefin/common:latest
-    src: /system_files/shared/usr/lib/modprobe.d/amd*
-    dest: /usr/lib/modprobe.d
-  - type: copy
-    from: ghcr.io/projectbluefin/common:latest
-    src: /system_files/bluefin/usr/lib/systemd/user/bazaar*
-    dest: /usr/lib/systemd/user
-
   # install some backgrounds
   - type: dnf
     repos:
