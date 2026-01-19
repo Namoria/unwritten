@@ -1,6 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # With special thanks and credit to the awesome Lumaeris: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml
+# Notes: Intel and NVIDIA stuff removed.
 
 name: unwritten
 description: This is the excellent VedaOS with some personal customizations.
@@ -51,12 +52,8 @@ modules:
     install:
       skip-unavailable: true
       packages:
-        - intel-gmmlib
-        - intel-mediasdk
-        - intel-vpl-gpu-rt
         - libheif
         - libva
-        - libva-intel-media-driver
         - mesa-dri-drivers
         - mesa-filesystem
         - mesa-libEGL
@@ -117,7 +114,6 @@ modules:
         - nvtop
         - openrgb-udev-rules
         - openssl
-        - oversteer-udev
         - pam-u2f
         - pam_yubico
         - pamu2fcfg
@@ -193,7 +189,6 @@ modules:
         - alsa-firmware
         - alsa-sof-firmware
         - alsa-tools-firmware
-        - intel-audio-firmware
         - gnome-disk-utility
         - uupd
         - unzip
@@ -330,12 +325,9 @@ modules:
 
   # some finishing touches
   - type: script
-    scripts:
-      - install-morewaita.sh
     snippets:
       - rm -rf /usr/share/doc
       - rm -rf /usr/src
-      - rpm --erase --nodeps akmod-nvidia
       - rpm --erase --nodeps kernel-cachyos-devel || true
       - rpm --erase --nodeps kernel-cachyos-lts-devel || true
       - rm -f /tmp/ltsbuild
@@ -355,14 +347,11 @@ modules:
         - input-remapper.service
         - rechunker-group-fix.service
         - nvctk-cdi.service
-        - brew-setup.service
       disabled:
         - rpm-ostree-countme.timer
       masked:
         - bootc-fetch-apply-updates.timer
         - bootc-fetch-apply-updates.service
-        - akmods-keygen@akmods-keygen.service
-        - akmods-keygen.target
     user:
       enabled:
         - bazaar.service
