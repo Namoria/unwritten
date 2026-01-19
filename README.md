@@ -1,40 +1,67 @@
 # Unwritten &nbsp; [![bluebuild build badge](https://github.com/namoria/unwritten/actions/workflows/build.yml/badge.svg)](https://github.com/namoria/unwritten/actions/workflows/build.yml)
 
 >[!WARNING]
->This is a tinkerer’s custom image and it should not be used by anyone, as I tend to break things.
+>**This is a tinkerer’s custom image and it should be avoided like by anyone, as I tend to break things.**
 
 ## Credit
-**This image is based on fedora-bootc. The working part of this custom image is taken from the excellent [VedaOS](https://github.com/Lumaeris/vedaos) by Lumaeris. The non-working part is mine.**
+Unwritten is a custom bootc image based on fedora-bootc and tailored to my AMD CPU/GPU desktop. Included are GNOME and Steam and the CachyOS kernel. The _working_ part of this custom image is taken largely from the excellent [**VedaOS**](https://github.com/Lumaeris/vedaos) by **Lumaeris**. I cannot recommend VedaOS more. The _non-working_ part of Unwritten is entirely mine.
 
 ## Installation
+>[!Important]
+>In Unwritten, **`run0`** is used instead of `sudo`. For some commands, you have to write **`run0 sh -c '$your_command$'`**; another workaround would be setting SELinux to permissive. Also, if you wish, you can still use `sudo` in a distrobox environment. This is an SELinux issue and will hopefully be resolved in the future.
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+## Installation
+* Please install [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) first.
+* Then **rebase** to Unwritten, as shown below.
 
-To rebase an existing atomic Fedora installation to the latest build:
+### 1. Pin a safe deployment
+> [!TIP]
+> It is good practice to pin a working deployment before you rebase to a new remote image source, for example, before switching from `ghcr.io/ublue-os/bazzite-gnome:stable` to `ghcr.io/namoria/namoriaos:latest`.
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/namoria/unwritten:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/namoria/unwritten:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
-
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
-
+- First, gather the index numbers of your deployments; they will be shown in round brackets:
+```shell
+rpm-ostree status -v
+```
+- Now, choose a deployment that worked well for you, and pin it in GRUB. For example, this will pin the deployment with `(index: 0)`:
+```shell  
+sudo ostree admin pin 0
+```
+- If not needed anymore, you can unpin the pinned deployment:
+```shell
+sudo ostree admin pin --unpin 0
+```
+> [!IMPORTANT]  
+> Remember that the index numbers change with incoming new deployments, and always make sure to use the correct one.
+### 2. Rebase
+- Rebase to an unsigned Unwritten image to get the proper signing keys:
+```shell
+sudo bootc switch ghcr.io/namoria/unwritten:latest
+```
+-  **After rebooting your system, `sudo` is gone. Use **`run0`** or **`run0 sh -c '$your_command$'`** from now on.**
+- If you don’t like your Unwritten experience, you can simply make your previous deployment the default one and boot back into it:
+```shell
+# USE THIS ONLY IF YOU HAVE CHANGED YOUR MIND:
+run0 sh -c 'bootc rollback'
+```
+> [!NOTE]  
+> In this use case, you can only use `bootc rollback` effectively, if you **don’t** update your system after you have rebased your system. If you get a second deployment from your new remote image source, a `bootc rollback` will _not_ bring you back to your previous remote image source.
+-  Lastly, if you are satisfied, rebase to a _signed_ Unwritten image to finish the installation:
+```shell
+run0 sh -c 'bootc switch --enforce-container-sigpolicy ghcr.io/namoria/unwritten:latest'
+```
 ## ISO
 
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+
+## Links
+### Go for these images instead of mine:
+
+- [VedaOS](https://github.com/Lumaeris/vedaos) – Special credit and thanks to Lumaeris! I could have never done this by myself from scratch.
+- [Zirconium](https://github.com/zirconium-dev/zirconium)
+- [XeniaOS](https://github.com/XeniaMeraki/XeniaOS) 
+- [solarpowered](https://github.com/askpng/solarpowered)
+- [MizukiOS](https://github.com/koitorin/MizukiOS)
+- [Entire Bootcrew project](https://github.com/bootcrew)
 
 ## Verification
 
