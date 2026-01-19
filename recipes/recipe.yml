@@ -136,6 +136,10 @@ modules:
 
   - type: script
     scripts:
+      - proton_vpn_app.sh
+
+  - type: script
+    scripts:
       - swap-kernel.sh
 
   - type: dnf
