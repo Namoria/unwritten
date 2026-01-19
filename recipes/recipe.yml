@@ -312,7 +312,6 @@ modules:
         - systemd-timesyncd.service
         - systemd-resolved.service
         - uupd.timer
-        - rechunker-group-fix.service
       disabled:
         - rpm-ostree-countme.timer
       masked:
