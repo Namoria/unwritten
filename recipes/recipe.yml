@@ -63,10 +63,6 @@ modules:
         - mesa-vulkan-drivers
         - ocl-icd
 
-  - type: script
-      snippets:
-      - rpm --import https://repo.protonvpn.com
-
   # lock rpms from fedora-multimedia
   - type: script
     snippets:
