@@ -256,8 +256,6 @@ modules:
         - yelp
         - yelp-libs
         - yelp-xsl
-      exclude:
-        - gnome-tour
 
   # get some system files from bluefin. gum is required which is installed on previous step
   - type: copy
