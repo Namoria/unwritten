@@ -1,14 +1,14 @@
 # Unwritten &nbsp; [![bluebuild build badge](https://github.com/namoria/unwritten/actions/workflows/build.yml/badge.svg)](https://github.com/namoria/unwritten/actions/workflows/build.yml)
 
 >[!WARNING]
->**This is a tinkerer’s custom image and it should be avoided like by anyone, as I tend to break things.**
+>**This is a tinkerer’s custom image; as I tend to break things, it should be avoided by anyone.**
 
 ## Credit
 Unwritten is a custom bootc image based on fedora-bootc and tailored to my AMD CPU/GPU desktop. Included are GNOME and Steam and the CachyOS kernel. The _working_ part of this custom image is taken largely from the excellent [**VedaOS**](https://github.com/Lumaeris/vedaos) by **Lumaeris**. I cannot recommend VedaOS more. The _non-working_ part of Unwritten is entirely mine.
 
 ## Installation
 >[!Important]
->In Unwritten, **`run0`** is used instead of `sudo`. For some commands, you have to write **`run0 sh -c '$your_command$'`**; another workaround would be setting SELinux to permissive. Also, if you wish, you can still use `sudo` in a distrobox environment. This is an SELinux issue and will hopefully be resolved in the future.
+>In Unwritten, **`run0`** is used instead of `sudo`. For some commands, you have to run **`run0 sh -c '$your_command$'`**—this is an SELinux issue and will hopefully be resolved in the future; you can also set SELinux to permissive (`setenforce 0`), but I don’t recommend it. Also, if you wish, you can still use `sudo` in a distrobox environment. 
 
 ## Installation
 * Please install [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) first.
@@ -49,9 +49,6 @@ run0 sh -c 'bootc rollback'
 ```shell
 run0 sh -c 'bootc switch --enforce-container-sigpolicy ghcr.io/namoria/unwritten:latest'
 ```
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
 ## Troubleshooting
 ### GDM does not start at boot
