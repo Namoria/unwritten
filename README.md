@@ -53,6 +53,19 @@ run0 sh -c 'bootc switch --enforce-container-sigpolicy ghcr.io/namoria/unwritten
 
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
+## Troubleshooting
+### GDM does not start at boot
+If at boot you are stuck with
+```
+[ OK ] Started gdm.service – GNOME Display Manager
+```
+enter the TTY by pressing `Ctrl` + `Alt` + `F2` (or `F3`–`F6`) (+, in some cases, `Fn`), and log in as your user. Then, run:
+```shell
+run0 groupadd -r gdm
+run0 systemctl restart gdm
+```
+You may have to enter the last command twice, or you may have to reboot.
+
 ## Links
 ### Go for these images instead of mine:
 
