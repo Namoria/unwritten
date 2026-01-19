@@ -229,9 +229,6 @@ modules:
         - chezmoi
         - clamav
         - clamav-freshclam
-        - deadbeef
-        - deadbeef-mpris2-plugin
-        - deadbeef-plugins
         - firefox
         - gamemode
         - gnome-shell-extension-caffeine
