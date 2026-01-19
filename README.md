@@ -1,10 +1,10 @@
-# unwritten &nbsp; [![bluebuild build badge](https://github.com/namoria/unwritten/actions/workflows/build.yml/badge.svg)](https://github.com/namoria/unwritten/actions/workflows/build.yml)
+# Unwritten &nbsp; [![bluebuild build badge](https://github.com/namoria/unwritten/actions/workflows/build.yml/badge.svg)](https://github.com/namoria/unwritten/actions/workflows/build.yml)
 
 >[!WARNING]
 >This is a tinkerer’s custom image and it should not be used by anyone, as I tend to break things.
 
 ## Credit
-**This image is based on the excellent [VedaOS](https://github.com/Lumaeris/vedaos) by Lumaeris.**
+**This image is based on fedora-bootc. The working part of this custom image is taken from the excellent [VedaOS](https://github.com/Lumaeris/vedaos) by Lumaeris. The non-working part is mine.**
 
 ## Installation
 
