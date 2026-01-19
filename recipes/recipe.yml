@@ -1,8 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# With special thanks and credit to the awesome Lumaeris: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml
-# Notes; removed: Nvidia and Intel stuff, Tailscale, iwlegacy-firmware,
-# For Intel, bring back: thermald, intel-vaapi-driver
+# WITH SPECIAL THANKS AND CREDIT TO THE AWESOME ==== LUMAERIS ==== OF ==== VEDAOS ====: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml     
+# A removal log is at the end of this file.
 
 name: unwritten
 description: This is the excellent VedaOS with some personal customizations.
@@ -316,4 +315,33 @@ modules:
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
-# With special thanks and credit to the awesome Lumaeris: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml      
+# My removal list for future reference:
+        #- intel-vaapi-driver
+        #- just
+        #- tmux
+        #- orca
+        #- yelp-tools
+        #- iwlegacy-firmware
+        #- uupd
+        #- glibc-all-langpacks
+        #- hyperv-daemons
+        #- open-vm-tools
+        #- open-vm-tools-desktop
+        #- qemu-guest-agent
+        #- thermald
+        #- libcap-ng-devel
+        #- procps-ng-devel
+        #- intel-gmmlib
+        #- intel-mediasdk
+        #- intel-vpl-gpu-rt
+	      #- libva-intel-media-driver
+	      #- oversteer-udev
+    	  #- intel-audio-firmware
+    	  #- brew-setup.service
+    	  #- akmods-keygen@akmods-keygen.service
+        #- akmods-keygen.target
+# NOTES:
+# vidia and Intel stuff removed, also Tailscale (package & service).
+# For Intel, bring back: thermald, intel-vaapi-driver, etc.
+
+# WITH SPECIAL THANKS AND CREDIT TO THE AWESOME ==== LUMAERIS ==== OF ==== VEDAOS ====: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml      
