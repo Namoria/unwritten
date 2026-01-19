@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # With special thanks and credit to the awesome Lumaeris: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml
-# Notes: Intel and NVIDIA stuff removed.
+# Notes; removed: Nvidia and Intel stuff, Tailscale
 
 name: unwritten
 description: This is the excellent VedaOS with some personal customizations.
@@ -142,12 +142,9 @@ modules:
       cleanup: true
       copr:
         - ublue-os/packages
-      files:
-        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
     install:
       packages:
         - flatpak
-        - tailscale
         - NetworkManager-adsl
         - gdm
         - gnome-bluetooth
@@ -314,20 +311,16 @@ modules:
         - gdm.service
         - systemd-timesyncd.service
         - systemd-resolved.service
-        - tailscaled.service
         - uupd.timer
-        - flatpak-add-flathub-repos.service
-        - input-remapper.service
         - rechunker-group-fix.service
-        - nvctk-cdi.service
       disabled:
         - rpm-ostree-countme.timer
       masked:
         - bootc-fetch-apply-updates.timer
         - bootc-fetch-apply-updates.service
-    user:
-      enabled:
-        - bazaar.service
+    # user:
+    #  enabled:
+        # - some.service
 
   - type: initramfs
 
