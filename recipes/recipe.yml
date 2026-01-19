@@ -68,17 +68,6 @@ modules:
     snippets:
       - dnf5 versionlock add intel-gmmlib intel-mediasdk intel-vpl-gpu-rt libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-va-drivers mesa-vulkan-drivers
 
-  # Install Proton VPN app:
-  - type: dnf
-    repos:
-      cleanup: true
-      files:
-        - https://repo.protonvpn.com
-    install:
-      packages:
-        - proton-vpn-gnome-desktop
-
-
   # install so called "batteries" coined by ublue
   - type: dnf
     repos:
@@ -88,6 +77,7 @@ modules:
     install:
       packages:
         - fedora-repos-archive
+        - proton-vpn-gnome-desktop
         - zstd
         - alsa-firmware
         - apr
