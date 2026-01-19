@@ -77,7 +77,6 @@ modules:
     install:
       packages:
         - fedora-repos-archive
-        - proton-vpn-gnome-desktop
         - zstd
         - alsa-firmware
         - apr
