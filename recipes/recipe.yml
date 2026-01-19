@@ -73,7 +73,7 @@ modules:
     repos:
       cleanup: true
       files:
-        - https://repo.protonvpn.com/fedora-43-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm
+        - https://repo.protonvpn.com
     install:
       packages:
         - proton-vpn-gnome-desktop
