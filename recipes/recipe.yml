@@ -56,7 +56,7 @@ modules:
     install:
       skip-unavailable: true
       packages:
-        - libheif
+        - libheif         
         - libva
         - mesa-dri-drivers
         - mesa-filesystem
@@ -83,8 +83,6 @@ modules:
         - fedora-repos-archive
         - zstd
         - alsa-firmware
-        - apr
-        - apr-util
         - distrobox
         - fdk-aac
         - ffmpeg
@@ -97,7 +95,6 @@ modules:
         - google-noto-sans-cjk-fonts
         - google-noto-sans-javanese-fonts
         - google-noto-sans-sundanese-fonts
-        - grub2-tools-extra
         - heif-pixbuf-loader
         - htop
         - libavcodec
@@ -107,18 +104,13 @@ modules:
         - libheif
         - libcamera-tools
         - libfdk-aac
-        - libimobiledevice-utils
         - libratbag-ratbagd
         - libva-utils
         - lshw
-        - net-tools
         - nvme-cli
         - nvtop
         - openrgb-udev-rules
         - openssl
-        - pam-u2f
-        - pam_yubico
-        - pamu2fcfg
         - pipewire-libs-extra
         - pipewire-plugin-libcamera
         - powerstat
@@ -128,7 +120,6 @@ modules:
         - symlinks
         - tcpdump
         - traceroute
-        - usbmuxd
         - wireguard-tools
         - wl-clipboard
         - xhost
@@ -148,19 +139,15 @@ modules:
     install:
       packages:
         - flatpak
-        - NetworkManager-adsl
         - gdm
         - gnome-bluetooth
         - gnome-color-manager
         - gnome-control-center
         - gnome-initial-setup
-        - gnome-remote-desktop
         - gnome-session-wayland-session
         - gnome-settings-daemon
         - gnome-shell
-        - gnome-user-docs
         - gvfs-fuse
-        - gvfs-goa
         - gvfs-gphoto2
         - gvfs-mtp
         - gvfs-smb
@@ -200,14 +187,12 @@ modules:
         - jmtpfs
         - NetworkManager-config-connectivity-fedora
         - NetworkManager-openvpn
-        - NetworkManager-wwan
         - cups
         - fprintd
         - fprintd-pam
         - hplip
         - ibus
         - libratbag-ratbagd
-        - pcsc-lite
         - systemd-oomd-defaults
         - whois
         - wireguard-tools
@@ -318,36 +303,97 @@ modules:
   - type: initramfs
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  
+##########################################
+## My removal list for future reference:##
+##########################################
 
-# My removal list for future reference:
-#- intel-vaapi-driver
-#- just
-#- tmux
-#- orca
-#- yelp-tools
-#- iwlegacy-firmware
-#- uupd
-#- glibc-all-langpacks
-#- hyperv-daemons
-#- open-vm-tools
-#- open-vm-tools-desktop
-#- qemu-guest-agent
-#- thermald
-#- libcap-ng-devel
-#- procps-ng-devel
-#- intel-gmmlib
-#- intel-mediasdk
-#- intel-vpl-gpu-rt
-#- libva-intel-media-driver
-#- oversteer-udev
-#- intel-audio-firmware
-#- brew-setup.service
-#- akmods-keygen@akmods-keygen.service
-#- akmods-keygen.target
+# Lecacy commands like `ipconfig` and `route`:
+  # - net-tools
+  # Use `ip addr` or `ip link` instead.
 
-# NOTES:
-# Nvidia and Intel stuff removed, also Tailscale (package & service).
-# For Intel, bring back: thermald, intel-vaapi-driver, etc.
+# iOS support (iPhone, iPod Touch, iPad and Apple TV, etc.):
+  # - usbmuxd
+  # - libimobiledevice-utils
+
+# Multi-factor authentification (YubiKey, etc.):
+  # - pam-u2f
+  # - pam_yubico
+  # - pamu2fcfg
+
+# Smart Card readers:
+  # - pcsc-lite
+
+# Apache Portable Runtime:
+  # - apr
+  # - apr-util
+
+# More GRUB tools (usually not needed for bootc):
+  # - grub2-tools-extra
+
+# DSL modem and LTE/5G modem support:
+  # - NetworkManager-adsl
+  # - NetworkManager-wwan
+
+# GNOME Connections support (for connections to YOUR device):
+  # - gnome-remote-desktop
+
+# GNOME manuals:
+  # - gnome-user-docs
+
+# GNOME Online Accounts:
+  # - gvfs-goa
+
+# Intel specific:
+  # - intel-vaapi-driver
+  # - intel-gmmlib
+  # - intel-mediasdk
+  # - intel-vpl-gpu-rt
+  # - intel-audio-firmware
+  # - libva-intel-media-driver
+  # PREVENTS OVERHEATING IN INTEL LAPTOPS:
+  # - thermald 
+
+# Virtualization Guest Tools:
+  # - hyperv-daemons
+  # - qemu-guest-agent
+  # - open-vm-tools
+  # - open-vm-tools-desktop
+
+# Tools for creating GNOME documentation:
+  # - yelp-tools
+
+# For very old WLAN Cards:
+  # - iwlegacy-firmware
+
+# Steering Wheel Manager (Oversteer) input:
+  # - oversteer-udev
+
+# Support for ALL languages:
+  # - glibc-all-langpacks
+
+# For .justfile scripts:
+  # - just
+  
+# Terminal multiplexer:
+  # - tmux
+
+# Text-to-speech:
+  # - orca
+
+# Universal Blue Update (automatic updates):
+  # - uupd
+
+# Header files for devs:
+  # - libcap-ng-devel
+  # - procps-ng-devel
+
+# Homebrew support:
+  # - brew-setup.service
+
+# Custom kernel signing:
+  # - akmods-keygen@akmods-keygen.service
+  # - akmods-keygen.target
 
 ###########################################################################################################################################################
 ## WITH SPECIAL THANKS AND CREDIT TO THE AWESOME ==== LUMAERIS ==== OF ==== VEDAOS ====: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml ##     
