@@ -80,11 +80,10 @@ modules:
         - ublue-os/packages
     install:
       packages:
-        - fedora-repos-archive
-        - zstd
         - alsa-firmware
         - distrobox
         - fdk-aac
+        - fedora-repos-archive
         - ffmpeg
         - ffmpeg-libs
         - ffmpegthumbnailer
@@ -101,9 +100,9 @@ modules:
         - libcamera
         - libcamera-gstreamer
         - libcamera-ipa
-        - libheif
         - libcamera-tools
         - libfdk-aac
+        - libheif
         - libratbag-ratbagd
         - libva-utils
         - lshw
@@ -124,6 +123,7 @@ modules:
         - wl-clipboard
         - xhost
         - xorg-x11-xauth
+        - zstd
 
   - type: script
     scripts:
@@ -138,88 +138,92 @@ modules:
         - ublue-os/packages
     install:
       packages:
-        - flatpak
-        - gdm
-        - gnome-bluetooth
-        - gnome-color-manager
-        - gnome-control-center
-        - gnome-initial-setup
-        - gnome-session-wayland-session
-        - gnome-settings-daemon
-        - gnome-shell
-        - gvfs-fuse
-        - gvfs-gphoto2
-        - gvfs-mtp
-        - gvfs-smb
-        - libsane-hpaio
-        - nautilus
-        - ptyxis
-        - sane-backends-drivers-scanners
-        - xdg-desktop-portal-gnome
-        - xdg-user-dirs-gtk
-        - plymouth
-        - plymouth-system-theme
-        - systemd-container
-        - libcamera-v4l2
-        - NetworkManager-wifi
-        - atheros-firmware
-        - brcmfmac-firmware
-        - iwlwifi-dvm-firmware
-        - iwlwifi-mvm-firmware
-        - mt7xxx-firmware
-        - nxpwireless-firmware
-        - realtek-firmware
-        - tiwilink-firmware
+        - adw-gtk3-theme
         - alsa-firmware
         - alsa-sof-firmware
         - alsa-tools-firmware
-        - gnome-disk-utility
-        - unzip
-        - adw-gtk3-theme
-        - wget
-        - jetbrains-mono-fonts-all
-        - fuse-libs
-        - squashfuse-libs
-        - glycin-thumbnailer
-        - fira-code-fonts
-        - hyfetch
-        - fastfetch
-        - jmtpfs
-        - NetworkManager-config-connectivity-fedora
-        - NetworkManager-openvpn
-        - cups
-        - fprintd
-        - fprintd-pam
-        - hplip
-        - ibus
-        - libratbag-ratbagd
-        - systemd-oomd-defaults
-        - whois
-        - wireguard-tools
-        - zram-generator-defaults
-        - gum
+        - atheros-firmware
         - borgbackup
+        - brcmfmac-firmware
         - btop
         - btrbk
         - chezmoi
         - clamav
         - clamav-freshclam
+        - cups
+        - fastfetch
+        - fira-code-fonts
         - firefox
+        - firewalld
+        - flatpak
+        - fprintd
+        - fprintd-pam
+        - fuse-libs
         - gamemode
+        - gdm
+        - git
+        - glibc-langpack-de
+        - glibc-langpack-en
+        - glibc-langpack-fr
+        - glycin-thumbnailer
+        - gnome-bluetooth
+        - gnome-color-manager
+        - gnome-control-center
+        - gnome-disk-utility
+        - gnome-initial-setup
+        - gnome-session-wayland-session
+        - gnome-settings-daemon
+        - gnome-shell
         - gnome-shell-extension-caffeine
         - gnome-shell-extension-gsconnect
+        - gum
+        - gvfs-fuse
+        - gvfs-gphoto2
+        - gvfs-mtp
+        - gvfs-smb
+        - hplip
+        - hyfetch
+        - ibus
         - inxi
+        - iwlwifi-dvm-firmware
+        - iwlwifi-mvm-firmware
+        - jetbrains-mono-fonts-all
+        - jmtpfs
+        - libcamera-v4l2
+        - libratbag-ratbagd
+        - libsane-hpaio
+        - lynis
+        - mangohud
         - mbuffer
         - micro
         - mpv
         - mpv-mpris
+        - mt7xxx-firmware
+        - nautilus
+        - NetworkManager-config-connectivity-fedora
+        - NetworkManager-openvpn
+        - NetworkManager-wifi
+        - nxpwireless-firmware
         - papers
+        - plymouth
+        - plymouth-system-theme
+        - ptyxis
         - pv
+        - realtek-firmware
+        - sane-backends-drivers-scanners
+        - squashfuse-libs
+        - systemd-container
+        - systemd-oomd-defaults
         - tealdeer
+        - tiwilink-firmware
+        - unzip
+        - wget
+        - whois
+        - wireguard-tools
+        - xdg-desktop-portal-gnome
+        - xdg-user-dirs-gtk
         - xwininfo
-        - glibc-langpack-fr
-        - glibc-langpack-en
-        - glibc-langpack-de
+        - zram-generator-defaults
     remove:
       packages:
         - gnome-tour
@@ -239,7 +243,6 @@ modules:
     install:
       packages:
         - f43-backgrounds-gnome
-        - git
 
   # install gnome extensions
   - type: gnome-extensions        
