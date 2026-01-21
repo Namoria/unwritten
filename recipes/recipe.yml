@@ -223,18 +223,18 @@ modules:
         - xwininfo
         - zram-generator-defaults
 
-    - type: dnf
-        repos:
-          cleanup: true
-        remove:
-          packages:
-           - gnome-tour
-           - ibus-libpinyin
-           - ibus-typing-booster
-           - malcontent-control
-           - yelp
-           - yelp-libs
-           - yelp-xsl  
+  - type: dnf
+    repos:
+      cleanup: true
+    remove:
+      packages:
+        - gnome-tour
+        - ibus-libpinyin
+        - ibus-typing-booster
+        - malcontent-control
+        - yelp
+        - yelp-libs
+        - yelp-xsl  
 
   # install some backgrounds
   - type: dnf
