@@ -305,6 +305,12 @@ modules:
     #  enabled:
         # - some.service
 
+  - type: kargs
+    args:
+      - plymouth.enable=0
+      - rd.plymouth=0
+      - rd.info=1
+
   - type: initramfs
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
