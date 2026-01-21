@@ -306,10 +306,11 @@ modules:
     #   - some.service
 
   - type: kargs
-    append:
+    kargs:
       - plymouth.enable=0
       - rd.plymouth=0
       - rd.info=1
+      - hid_apple.fnmode=2
 
   - type: initramfs
 
