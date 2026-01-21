@@ -302,20 +302,14 @@ modules:
         - bootc-fetch-apply-updates.timer
         - bootc-fetch-apply-updates.service
     # user:
-    #  enabled:
-        # - some.service
+    #   enabled:
+    #   - some.service
 
   - type: kargs
-      append:
-        - plymouth.enable=0
-        - rd.plymouth=0
-        - rd.info=1
-
-- type: kargs
-  append:
-    - plymouth.enable=0
-    - rd.plymouth=0
-    - rd.info=1
+    append:
+      - plymouth.enable=0
+      - rd.plymouth=0
+      - rd.info=1
 
   - type: initramfs
 
