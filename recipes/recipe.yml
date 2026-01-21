@@ -72,7 +72,7 @@ modules:
     snippets:
       - dnf5 versionlock add intel-gmmlib intel-mediasdk intel-vpl-gpu-rt libheif libva libva-intel-media-driver mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-va-drivers mesa-vulkan-drivers
 
-  # install so called "batteries" coined by ublue
+  # Install so called "batteries" coined by Universal Blue:
   - type: dnf
     repos:
       cleanup: true
@@ -205,8 +205,6 @@ modules:
         - NetworkManager-wifi
         - nxpwireless-firmware
         - papers
-        - plymouth
-        - plymouth-system-theme
         - ptyxis
         - pv
         - realtek-firmware
@@ -224,15 +222,19 @@ modules:
         - xdg-user-dirs-gtk
         - xwininfo
         - zram-generator-defaults
-    remove:
-      packages:
-        - gnome-tour
-        - ibus-libpinyin
-        - ibus-typing-booster
-        - malcontent-control
-        - yelp
-        - yelp-libs
-        - yelp-xsl
+
+    - type: dnf
+        repos:
+          cleanup: true
+        remove:
+          packages:
+           - gnome-tour
+           - ibus-libpinyin
+           - ibus-typing-booster
+           - malcontent-control
+           - yelp
+           - yelp-libs
+           - yelp-xsl  
 
   # install some backgrounds
   - type: dnf
@@ -247,9 +249,8 @@ modules:
   # install gnome extensions
   - type: gnome-extensions        
     install:
-      - 7065 # Tiling Shell
-      - 517 # Caffeine
-      - 615 # AppIndicator and KStatusNotifierItem Support      
+      - 7065    # Tiling Shell
+      - 615     # AppIndicator and KStatusNotifierItem Support      
 
   # install steam
   - type: dnf
@@ -294,6 +295,7 @@ modules:
         - systemd-timesyncd.service
         - systemd-resolved.service
         - rechunker-group-fix.service
+        - me.proton.vpn.split_tunneling.service
       disabled:
         - rpm-ostree-countme.timer
       masked:
