@@ -215,6 +215,7 @@ modules:
         - tealdeer
         - tiwilink-firmware
         - unzip
+        - webapp-manager
         - wget
         - whois
         - wireguard-tools
