@@ -215,7 +215,6 @@ modules:
         - tealdeer
         - tiwilink-firmware
         - unzip
-        - webapp-manager
         - wget
         - whois
         - wireguard-tools
@@ -223,6 +222,16 @@ modules:
         - xdg-user-dirs-gtk
         - xwininfo
         - zram-generator-defaults
+
+  # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - kylegospo/webapp-manager
+    install:
+      packages:
+        - webapp-manager
 
   - type: dnf
     repos:
