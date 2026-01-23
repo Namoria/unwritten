@@ -184,6 +184,8 @@ modules:
         - gvfs-smb
         - hplip
         - hyfetch
+        - ibm-plex-mono-fonts
+        - ibm-plex-sans-fonts
         - ibus
         - inxi
         - iwlwifi-dvm-firmware
@@ -224,19 +226,7 @@ modules:
         - xwininfo
         - zram-generator-defaults
 
-    # Install some additional fonts and some shell goodies:
-    - type: dnf
-      repos:
-        cleanup: true
-        copr:
-          - ublue-os/packages
-      install:
-          - ibm-plex-mono-fonts
-          - ibm-plex-sans-fonts
-          # Currently Rawhide only; comment out in the future: - atkinson-hyperlegible-next-fonts
-          # Currently Rawhide only; comment out in the future: - atkinson-hyperlegible-mono-fonts
-
-    - type: starship
+  - type: starship
 
   # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
