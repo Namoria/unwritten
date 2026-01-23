@@ -153,6 +153,7 @@ modules:
         - clamav-freshclam
         - cups
         - fastfetch
+        - f43-backgrounds-gnome
         - fira-code-fonts
         - firefox
         - firewalld
@@ -223,20 +224,9 @@ modules:
         - xdg-desktop-portal-gnome
         - xdg-user-dirs-gtk
         - xwininfo
-        - zram-generator-defaults
-        
-  # Install DeaDBeeF:
-  - type: dnf
-    repos:
-      cleanup: true
-      nonfree: rpmfusion
-    install:
-      packages:
-        - deadbeef
-        - deadbeef-mpris2-plugin
-        - deadbeef-plugins
-        
-  # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
+        - zram-generator-defaults        
+    
+  # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
   #  repos:
   #    cleanup: true
@@ -257,38 +247,39 @@ modules:
         - malcontent-control
         - yelp
         - yelp-libs
-        - yelp-xsl  
-
-  # install some backgrounds
+        - yelp-xsl 
+        
+  # Steam:
   - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - ublue-os/bazzite
     install:
       packages:
-        - f43-backgrounds-gnome
-
-  # install gnome extensions
+        - steam
+  
+  # GNOME extensions:
   - type: gnome-extensions        
     install:
       - 7065    # Tiling Shell
       - 615     # AppIndicator and KStatusNotifierItem Support
       # GSConnect  (installed as rpm package `gnome-shell-extension-gsconnect`, see above)
       # Caffeine   (installed as rpm package `gnome-shell-extension-caffeine`, see above)
-
-  # install steam
+       
+  # DeaDBeeF (make sure these are the last rpm packages to be installed):
   - type: dnf
+    repos:
+      cleanup: true
+      nonfree: rpmfusion
     install:
       packages:
-        - steam
-
+        - deadbeef
+        - deadbeef-mpris2-plugin
+        - deadbeef-plugins
+        
   # Set DeaDBeeF to dark theme:
   - type: script
     scripts:
       - deadbeef.sh
    
-  # set new os-release values
+  # Stamp:
   - type: os-release
     properties:
       ID: unwritten
@@ -317,7 +308,7 @@ modules:
       - dnf5 versionlock clear
       - dnf5 clean all
 
-  # enable systemd services
+  # Systemd services:
   - type: systemd
     system:
       enabled:
