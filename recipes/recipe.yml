@@ -330,7 +330,7 @@ modules:
       - rd.info=1
 
   # Set kernel arguments for Varmilo keyboard, so you don’t have to press the `FN` key to get `F1`–`F12` working:
-    - type: kargs
+  - type: kargs
     kargs:
       - hid_apple.fnmode=2
 
