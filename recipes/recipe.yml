@@ -214,6 +214,7 @@ modules:
         - realtek-firmware
         - sane-backends-drivers-scanners
         - squashfuse-libs
+        - starship
         - systemd-container
         - systemd-oomd-defaults
         - tealdeer
@@ -225,8 +226,6 @@ modules:
         - xdg-user-dirs-gtk
         - xwininfo
         - zram-generator-defaults
-
-  - type: starship
 
   # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
