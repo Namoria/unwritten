@@ -214,7 +214,6 @@ modules:
         - realtek-firmware
         - sane-backends-drivers-scanners
         - squashfuse-libs
-        - starship
         - systemd-container
         - systemd-oomd-defaults
         - tealdeer
