@@ -127,6 +127,17 @@ modules:
         - xorg-x11-xauth
         - zstd
 
+  # Install DeaDBeeF:
+  - type: dnf
+    repos:
+      cleanup: true
+      nonfree: rpmfusion
+    install:
+      packages:
+        - deadbeef
+        - deadbeef-mpris2-plugin
+        - deadbeef-plugins
+        
   - type: script
     scripts:
       - proton_vpn_app.sh
@@ -152,9 +163,6 @@ modules:
         - clamav
         - clamav-freshclam
         - cups
-        - deadbeef
-        - deadbeef-mpris2-plugin
-        - deadbeef-plugins 
         - fastfetch
         - fira-code-fonts
         - firefox
