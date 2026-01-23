@@ -5,7 +5,9 @@
 ## WITH SPECIAL THANKS AND CREDIT TO THE AWESOME ==== LUMAERIS ==== OF ==== VEDAOS ====: https://github.com/Lumaeris/vedaos/blob/main/recipes/recipe.yml ##     
 ###########################################################################################################################################################
 
-# Find a removal log at the end of this file.
+################################################
+## Find a removal log at the end of this file.##
+################################################
 
 name: unwritten
 description: This is the excellent VedaOS with some personal customizations.
@@ -33,11 +35,11 @@ modules:
   - type: dnf
     remove:
       packages:
-        - console-login-helper-messages
-        - chrony
-        - sssd*
-        - qemu-user-static*
-        - toolbox
+        # - console-login-helper-messages
+        - chrony                           # replaced with systemd-timesyncd (see below)
+        - sssd*                            # not needed if only local users are used
+        - qemu-user-static*                # not needed unless cross-arch dev is required
+        - toolbox                          # replaced by distrobox (see below)
 
   # footgun. see https://github.com/ublue-os/main/issues/598
   - type: script
@@ -139,7 +141,6 @@ modules:
     install:
       packages:
         - adw-gtk3-theme
-        - alsa-firmware
         - alsa-sof-firmware
         - alsa-tools-firmware
         - atheros-firmware
@@ -189,6 +190,7 @@ modules:
         - iwlwifi-mvm-firmware
         - jetbrains-mono-fonts-all
         - jmtpfs
+        - keepassxc
         - libcamera-v4l2
         - libratbag-ratbagd
         - libsane-hpaio
@@ -217,21 +219,34 @@ modules:
         - unzip
         - wget
         - whois
-        - wireguard-tools
         - xdg-desktop-portal-gnome
         - xdg-user-dirs-gtk
         - xwininfo
         - zram-generator-defaults
 
+    # Install some additional fonts and some shell goodies:
+    - type: dnf
+      repos:
+        cleanup: true
+        copr:
+          - ublue-os/packages
+      install:
+          - ibm-plex-mono-fonts
+          - ibm-plex-sans-fonts
+          # Currently Rawhide only; comment out in the future: - atkinson-hyperlegible-next-fonts
+          # Currently Rawhide only; comment out in the future: - atkinson-hyperlegible-mono-fonts
+
+    - type: starship
+
   # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
-  - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - kylegospo/webapp-manager
-    install:
-      packages:
-        - webapp-manager
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - kylegospo/webapp-manager
+  #  install:
+  #    packages:
+  #      - webapp-manager
 
   - type: dnf
     repos:
@@ -260,7 +275,9 @@ modules:
   - type: gnome-extensions        
     install:
       - 7065    # Tiling Shell
-      - 615     # AppIndicator and KStatusNotifierItem Support      
+      - 615     # AppIndicator and KStatusNotifierItem Support
+      # GSConnect  (installed as rpm package `gnome-shell-extension-gsconnect`, see above)
+      # Caffeine   (installed as rpm package `gnome-shell-extension-caffeine`, see above)
 
   # install steam
   - type: dnf
@@ -315,16 +332,22 @@ modules:
     #   enabled:
     #   - some.service
 
+  # Set kernel arguments for disabling plymouth (since it is not part of Unwritten):
   - type: kargs
     kargs:
       - plymouth.enable=0
       - rd.plymouth=0
       - rd.info=1
+
+  # Set kernel arguments for Varmilo keyboard, so you don’t have to press the `FN` key to get `F1`–`F12` working:
+    - type: kargs
+    kargs:
       - hid_apple.fnmode=2
 
   - type: initramfs
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+ # this sets up the proper policy & signing files for signed images to work fully:
+  - type: signing 
   
 ##########################################
 ## My removal list for future reference:##
