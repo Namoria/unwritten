@@ -192,7 +192,6 @@ modules:
         - iwlwifi-mvm-firmware
         - jetbrains-mono-fonts-all
         - jmtpfs
-        - keepassxc
         - libcamera-v4l2
         - libratbag-ratbagd
         - libsane-hpaio
