@@ -126,7 +126,7 @@ modules:
         - xhost
         - xorg-x11-xauth
         - zstd
-       
+
   - type: script
     scripts:
       - proton_vpn_app.sh
@@ -152,6 +152,9 @@ modules:
         - clamav
         - clamav-freshclam
         - cups
+        - deadbeef
+        - deadbeef-mpris2-plugin
+        - deadbeef-plugins 
         - fastfetch
         - fira-code-fonts
         - firefox
@@ -225,7 +228,7 @@ modules:
         - xwininfo
         - zram-generator-defaults
 
-  # Install Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
+  # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
   #  repos:
   #    cleanup: true
@@ -272,17 +275,11 @@ modules:
       packages:
         - steam
 
-  # Install DeaDBeeF:
-  - type: dnf
-    repos:
-      cleanup: true
-      nonfree: rpmfusion
-    install:
-      packages:
-        - deadbeef
-        - deadbeef-mpris2-plugin
-        - deadbeef-plugins
-
+  # Set DeaDBeeF to dark theme:
+  - type: script
+    scripts:
+      - deadbeef.sh
+   
   # set new os-release values
   - type: os-release
     properties:
