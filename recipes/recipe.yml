@@ -126,18 +126,7 @@ modules:
         - xhost
         - xorg-x11-xauth
         - zstd
-
-  # Install DeaDBeeF:
-  - type: dnf
-    repos:
-      cleanup: true
-      nonfree: rpmfusion
-    install:
-      packages:
-        - deadbeef
-        - deadbeef-mpris2-plugin
-        - deadbeef-plugins
-        
+       
   - type: script
     scripts:
       - proton_vpn_app.sh
@@ -236,7 +225,7 @@ modules:
         - xwininfo
         - zram-generator-defaults
 
-  # Install inux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
+  # Install Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
   #  repos:
   #    cleanup: true
@@ -282,6 +271,17 @@ modules:
     install:
       packages:
         - steam
+
+  # Install DeaDBeeF:
+  - type: dnf
+    repos:
+      cleanup: true
+      nonfree: rpmfusion
+    install:
+      packages:
+        - deadbeef
+        - deadbeef-mpris2-plugin
+        - deadbeef-plugins
 
   # set new os-release values
   - type: os-release
