@@ -152,6 +152,9 @@ modules:
         - clamav
         - clamav-freshclam
         - cups
+        - deadbeef
+        - deadbeef-mpris2-plugin
+        - deadbeef-plugins 
         - fastfetch
         - fira-code-fonts
         - firefox
