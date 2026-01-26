@@ -144,6 +144,7 @@ modules:
         - alsa-sof-firmware
         - alsa-tools-firmware
         - atheros-firmware
+        - atuin
         - borgbackup
         - brcmfmac-firmware
         - btop
@@ -271,7 +272,7 @@ modules:
     install:
       packages:
         - deadbeef
-        - deadbeef-mpris2-plugin
+        # - deadbeef-mpris2-plugin # currently causes issues (cursour stutters while skipping to the next song)
         - deadbeef-plugins
         
   # Set DeaDBeeF to dark theme:
