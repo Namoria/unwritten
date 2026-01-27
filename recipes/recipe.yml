@@ -225,7 +225,8 @@ modules:
         - xdg-desktop-portal-gnome
         - xdg-user-dirs-gtk
         - xwininfo
-        - zram-generator-defaults        
+        - zram-generator-defaults
+        - zsh
     
   # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
