@@ -319,14 +319,15 @@ modules:
         - systemd-resolved.service
         - rechunker-group-fix.service
         - me.proton.vpn.split_tunneling.service
+        - btrbk.timer
       disabled:
         - rpm-ostree-countme.timer
       masked:
         - bootc-fetch-apply-updates.timer
         - bootc-fetch-apply-updates.service
     # user:
-    #   enabled:
-    #   - some.service
+    #  enabled:
+        # - some_service.service
 
   # Set kernel arguments for disabling plymouth (since it is not part of Unwritten):
   - type: kargs
