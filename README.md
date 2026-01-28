@@ -57,11 +57,14 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 ## Post-installation
 
 ### Switching to zsh
-The easiest way to switch to Z Shell (zsh) is to edit your profile in GNOME terminal (Ptyxis). The advantage of this is that system files (e.g. `/etc/passwd`) will be left untouched.
-* In Ptyxis, click on the hamburger menu > _Preferences_ > _Profiles_ > three vertical dots > _Edit..._ > in the section _Shell_ > enable _Use Custom Command_ > and set it to `/usr/bin/zsh --login`.
+The easiest way to switch to [Z Shell (zsh)](https://www.zsh.org/) is to edit your profile in GNOME terminal (Ptyxis). The advantage of this is that system files (e.g. `/etc/passwd`) will be left untouched.
+* In Ptyxis, click on the hamburger menu > _Preferences_ > _Profiles_ > on the three vertical dots > _Edit..._ > in the section _Shell_ > enable _Use Custom Command_ > and set it to `/usr/bin/zsh --login`.
 
 ### Enable atuin
-[Atuin](https://github.com/atuinsh/atuin) is the ‘magical shell history’ and its package is included in Unwritten. To make it work, I recommend switching to zsh first. Then, add this to `~/.zshr`:
+[Atuin](https://github.com/atuinsh/atuin) is the ‘magical shell history’ and its package is included in Unwritten. To make it work, I recommend switching to zsh first. 
+
+* After switching to zsh, add this to `~/.zshr`:
+
 ```shell
 eval "$(atuin init zsh)"
 ```
