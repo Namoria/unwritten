@@ -186,7 +186,6 @@ modules:
         - gvfs-smb
         - hplip
         - hyfetch
-        - ibm-plex-mono-fonts
         - ibm-plex-sans-fonts
         - ibus
         - inxi
