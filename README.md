@@ -1,7 +1,7 @@
 # Unwritten &nbsp; [![bluebuild build badge](https://github.com/namoria/unwritten/actions/workflows/build.yml/badge.svg)](https://github.com/namoria/unwritten/actions/workflows/build.yml)
 
 >[!WARNING]
->**This is a tinkerer’s custom image; as I tend to break things, it should be avoided by anyone.**
+>**This is a tinkerer’s custom image.**
 
 ## Credit
 Unwritten is a custom bootc image based on fedora-bootc and tailored to my AMD CPU/GPU desktop. Included are GNOME and Steam and the CachyOS kernel. The _working_ part of this custom image is taken largely from the excellent [**VedaOS**](https://github.com/Lumaeris/vedaos) by **Lumaeris**. I cannot recommend VedaOS more. The _non-working_ part of Unwritten is entirely mine.
@@ -32,7 +32,7 @@ sudo ostree admin pin --unpin 0
 ```
 > [!IMPORTANT]  
 > Remember that the index numbers change with incoming new deployments, and always make sure to use the correct one.
-### 2. Rebase
+### 2. Rebase to Unwritten
 - Rebase to an unsigned Unwritten image to get the proper signing keys:
 ```shell
 sudo bootc switch ghcr.io/namoria/unwritten:latest
@@ -50,9 +50,25 @@ run0 sh -c 'bootc rollback'
 run0 sh -c 'bootc switch --enforce-container-sigpolicy ghcr.io/namoria/unwritten:latest'
 ```
 
+### Verification
+
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+
+## Post-installation
+
+### Switching to zsh
+The easiest way to switch to Z Shell (zsh) is to edit your profile in GNOME terminal (Ptyxis). The advantage of this is that system files (e.g. `/etc/passwd`) will be left untouched.
+* In Ptyxis, click on the hamburger menu > _Preferences_ > _Profiles_ > three vertical dots > _Edit..._ > in the section _Shell_ > enable _Use Custom Command_ > and set it to `/usr/bin/zsh --login`.
+
+### Enable atuin
+[Atuin](https://github.com/atuinsh/atuin) is the ‘magical shell history’ and its package is included in Unwritten. To make it work, I recommend switching to zsh first. Then, add this to `~/.zshr`:
+```shell
+eval "$(atuin init zsh)"
+```
+
 ## Troubleshooting
 ### GDM does not start at boot
-If at boot you are stuck with
+If for some reason, at boot, you are stuck with
 ```
 [ OK ] Started gdm.service – GNOME Display Manager
 ```
@@ -64,18 +80,14 @@ run0 systemctl restart gdm
 You may have to enter the last command twice, or you may have to reboot.
 
 ## Links
-### Go for these images instead of mine:
+### These are well made custom images:
 
-- [VedaOS](https://github.com/Lumaeris/vedaos) – Special credit and thanks to Lumaeris! I could have never done this by myself from scratch.
+- [VedaOS](https://github.com/Lumaeris/vedaos) – Special credit and thanks to Lumaeris!
 - [Zirconium](https://github.com/zirconium-dev/zirconium)
 - [XeniaOS](https://github.com/XeniaMeraki/XeniaOS) 
 - [solarpowered](https://github.com/askpng/solarpowered)
 - [MizukiOS](https://github.com/koitorin/MizukiOS)
 - [Entire Bootcrew project](https://github.com/bootcrew)
-
-## Verification
-
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 
 ```bash
 cosign verify --key cosign.pub ghcr.io/namoria/unwritten
