@@ -68,6 +68,18 @@ The easiest way to switch to [Z Shell (zsh)](https://www.zsh.org/) is to edit yo
 ```shell
 eval "$(atuin init zsh)"
 ```
+### Install Starship
+[Starship](https://starship.rs) is a beautiful shell prompt written in RUST. 
+
+* To install it locally, run:
+```shell
+curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin
+```
+* In your `~/.zshr` file, add:
+```shell
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(starship init zsh)"
+```
 
 ## Troubleshooting
 ### GDM does not start at boot
