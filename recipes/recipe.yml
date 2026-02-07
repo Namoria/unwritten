@@ -153,6 +153,7 @@ modules:
         - clamav
         - clamav-freshclam
         - cups
+        - evtest
         - fastfetch
         - f43-backgrounds-gnome
         - fira-code-fonts
