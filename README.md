@@ -56,11 +56,12 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 
 ## Post-installation
 
-### Switching to zsh
-The easiest way to switch to [Z Shell (zsh)](https://www.zsh.org/) is to edit your profile in GNOME terminal (Ptyxis). The advantage of this is that system files (e.g. `/etc/passwd`) will be left untouched.
+### The Terminal
+#### Z Shell
+[Z Shell (zsh)](https://www.zsh.org/) is has some [advantages](https://linuxhint.com/differences_between_bash_zsh/) compared to Bash. To switch to Z Shell, edit your profile in GNOME terminal (Ptyxis); the advantage of this is that system files (e.g. `/etc/passwd`) will be left untouched.
 * In Ptyxis, click on the hamburger menu > _Preferences_ > _Profiles_ > on the three vertical dots > _Edit..._ > in the section _Shell_ > enable _Use Custom Command_ > and set it to `/usr/bin/zsh --login`.
 
-### Enable atuin
+#### Atuin
 [Atuin](https://github.com/atuinsh/atuin) is the ‘magical shell history’ and its package is included in Unwritten. To make it work, I recommend switching to zsh first. 
 
 * After switching to zsh, add this to `~/.zshr`:
@@ -68,8 +69,8 @@ The easiest way to switch to [Z Shell (zsh)](https://www.zsh.org/) is to edit yo
 ```shell
 eval "$(atuin init zsh)"
 ```
-### Install Starship
-[Starship](https://starship.rs) is a beautiful shell prompt written in RUST. 
+#### Starship
+[Starship](https://starship.rs) is a beautiful shell prompt written in RUST.
 
 * To install it locally, run:
 ```shell
@@ -80,6 +81,14 @@ curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(starship init zsh)"
 ```
+
+## Variable refresh rate
+[Refine](https://flathub.org/en-GB/apps/search?q=refine) allows you to change advanced GNOME settings. 
+
+* Use Refine to enable VRR settings, and then enable them in the regular GNOME settings.
+
+>[!important]
+>In most games, you should now disable VSync, as it conflicts with GNOME’s VRR.
 
 ## Troubleshooting
 ### GDM does not start at boot
