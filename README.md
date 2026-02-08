@@ -90,6 +90,15 @@ eval "$(starship init zsh)"
 >[!important]
 >In most games, you should now disable VSync, as it conflicts with GNOME’s VRR.
 
+## Gaming
+### MangoHud
+* Install MangoHud for Steam (Flatpak version):
+```shell
+flatpak install org.freedesktop.Platform.VulkanLayer.MangoHud
+```
+* Use Flatseal and give Steam this filesystem permission: `xdg-config/MangoHud:ro`.
+
+
 ## Troubleshooting
 ### GDM does not start at boot
 If for some reason, at boot, you are stuck with
