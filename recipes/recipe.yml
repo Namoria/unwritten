@@ -252,10 +252,10 @@ modules:
         - yelp-xsl 
         
   # Steam:
-  - type: dnf
-    install:
-      packages:
-        - steam
+  #- type: dnf
+  #  install:
+  #    packages:
+  #      - steam
   
   # GNOME extensions:
   - type: gnome-extensions        
