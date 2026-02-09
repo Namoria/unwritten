@@ -227,6 +227,18 @@ modules:
         - xwininfo
         - zram-generator-defaults
         - zsh
+        
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - ublue-os/packages
+    install:
+      packages:
+        - niri
+        - swaybg
+        - fuzzel
+        - alacritty
     
   # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
