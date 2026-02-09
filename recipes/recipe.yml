@@ -236,6 +236,7 @@ modules:
     install:
       packages:
         - niri
+        - niri-settings
         - swaybg
         - fuzzel
         - alacritty
