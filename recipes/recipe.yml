@@ -246,7 +246,7 @@ modules:
         - zhangyi6324/noctalia-shell
     install:
       packages:
-        - noctalia
+        - noctalia-shell
         - quickshell
     
   # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
