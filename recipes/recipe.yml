@@ -237,9 +237,17 @@ modules:
       packages:
         - niri
         - niri-settings
-        - swaybg
-        - fuzzel
         - alacritty
+        
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - zhangyi6324/noctalia-shell
+    install:
+      packages:
+        - noctalia
+        - quickshell
     
   # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
