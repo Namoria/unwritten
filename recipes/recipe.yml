@@ -199,6 +199,7 @@ modules:
         - libsane-hpaio
         - lynis
         - mangohud
+        - mate-polkit
         - mbuffer
         - micro
         - mpv
