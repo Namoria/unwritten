@@ -160,6 +160,8 @@ modules:
         - firefox
         - firewalld
         - flatpak
+        - foot
+        - foot-terminfo
         - fprintd
         - fprintd-pam
         - fuse-libs
@@ -238,7 +240,6 @@ modules:
       packages:
         - niri
         - niri-settings
-        - alacritty
         
   - type: dnf
     repos:
