@@ -145,6 +145,7 @@ modules:
         - alsa-tools-firmware
         - atheros-firmware
         - atuin
+        - bc
         - borgbackup
         - brcmfmac-firmware
         - btop
