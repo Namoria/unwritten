@@ -160,8 +160,6 @@ modules:
         - firefox
         - firewalld
         - flatpak
-        - foot
-        - foot-terminfo
         - fprintd
         - fprintd-pam
         - fuse-libs
@@ -283,8 +281,11 @@ modules:
   # GNOME extensions:
   - type: gnome-extensions        
     install:
-      - 7065    # Tiling Shell
-      - 615     # AppIndicator and KStatusNotifierItem Support
+      - 7065    # Tiling Shell: https://extensions.gnome.org/extension/7065/tiling-shell/
+      - 615     # AppIndicator and KStatusNotifierItem Support: https://extensions.gnome.org/extension/615/appindicator-support/
+      - 3843    # Just Perfection: https://extensions.gnome.org/extension/3843/just-perfection/
+      - 5506    # User Avatar In Quick Settings: https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/
+      - 5470    # Weather O’Clock: https://extensions.gnome.org/extension/5470/weather-oclock/
       # GSConnect  (installed as rpm package `gnome-shell-extension-gsconnect`, see above)
       # Caffeine   (installed as rpm package `gnome-shell-extension-caffeine`, see above)
        
