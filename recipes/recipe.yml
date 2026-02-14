@@ -230,25 +230,25 @@ modules:
         - zram-generator-defaults
         - zsh
         
-  - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - ublue-os/packages
-    install:
-      packages:
-        - niri
-        - niri-settings
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - ublue-os/packages
+  #  install:
+  #    packages:
+  #      - niri
+  #      - niri-settings
         
-  - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - zhangyi6324/noctalia-shell
-    install:
-      packages:
-        - noctalia-shell
-        - quickshell
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - zhangyi6324/noctalia-shell
+  #  install:
+  #    packages:
+  #      - noctalia-shell
+  #      - quickshell
     
   # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
   #- type: dnf
