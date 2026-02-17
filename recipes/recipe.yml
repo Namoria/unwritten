@@ -211,6 +211,7 @@ modules:
         - NetworkManager-openvpn
         - NetworkManager-wifi
         - nxpwireless-firmware
+        - orca
         - papers
         - ptyxis
         - pv
@@ -444,9 +445,6 @@ modules:
   
 # Terminal multiplexer:
   # - tmux
-
-# Text-to-speech:
-  # - orca
 
 # Universal Blue Update (automatic updates):
   # - uupd
