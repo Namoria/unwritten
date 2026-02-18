@@ -301,6 +301,8 @@ modules:
         - deadbeef
         # - deadbeef-mpris2-plugin # currently causes issues (cursour stutters while skipping to the next song)
         - deadbeef-plugins
+      exclude:
+        - deadbeef-mpris2-plugin
         
   # Set DeaDBeeF to dark theme:
   - type: script
