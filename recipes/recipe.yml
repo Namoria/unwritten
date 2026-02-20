@@ -190,6 +190,7 @@ modules:
         - hyfetch
         - ibm-plex-sans-fonts
         - ibus
+        - imagemagick
         - inxi
         - iwlwifi-dvm-firmware
         - iwlwifi-mvm-firmware
