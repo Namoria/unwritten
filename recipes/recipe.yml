@@ -353,7 +353,7 @@ modules:
         - systemd-resolved.service                 # Enables local DNS resolution daemon
         - me.proton.vpn.split_tunneling.service    # Enables ProtonVPN split tunneling backend
         - btrbk.timer                              # Enables btrfs backup timer routine
-	- scx_loader.service    		   # Loads sched-ext-Scheduler laden # sched-ext-Scheduler; Config in /etc/scx_loader.toml)
+	- scx_loader.service    		   # Loads sched-ext-Scheduler laden
       disabled:
         - rpm-ostree-countme.timer                 # Disables sending analytics/counting data to Fedora
       masked:
