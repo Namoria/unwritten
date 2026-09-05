@@ -309,9 +309,9 @@ modules:
 ##################
 
 # fprintd is not part of this image – without it, PAM will get noisy:
-- type: script
-  snippets:
-    - authselect disable-feature with-fingerprint
+  - type: script
+    snippets:
+      - authselect disable-feature with-fingerprint
 
 
 ################
