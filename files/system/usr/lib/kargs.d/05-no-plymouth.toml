@@ -1,1 +1,0 @@
-kargs = ["plymouth.enable=0", "rd.plymouth=0", "rd.info"]

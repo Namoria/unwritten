@@ -211,7 +211,7 @@ modules:
         - glibc-langpack-en                # English language pack for GNU C Library
         - glibc-langpack-fr                # French language pack for GNU C Library
         - google-noto-sans-balinese-fonts  # Font support for Balinese script
-        - google-noto-sans-cjk-fonts       # Font support for Chinese, Japanese, and Korean
+        - google-noto-sans-cjk-vf-fonts       # Font support for Chinese, Japanese, and Korean
         - google-noto-sans-javanese-fonts  # Font support for Javanese script
         - google-noto-sans-sundanese-fonts # Font support for Sundanese script
         - ibm-plex-sans-fonts              # IBM's open-source corporate typeface
@@ -304,6 +304,16 @@ modules:
       # GSConnect, i.e. 1319 (installed as rpm, see above)          https://extensions.gnome.org/extension/1319/gsconnect/
       # Caffeine, i.e. 517 (installed as rpm, see above)            https://extensions.gnome.org/extension/517/caffeine/
 
+##################
+##  PAM / Auth  ##
+##################
+
+# fprintd is not part of this image – without it, PAM will get noisy:
+- type: script
+  snippets:
+    - authselect disable-feature with-fingerprint
+
+
 ################
 ##  DeaDBeeF  ##
 ################
@@ -351,6 +361,7 @@ modules:
         - me.proton.vpn.split_tunneling.service    # Enables ProtonVPN split tunneling backend
         - btrbk.timer                              # Enables btrfs backup timer routine
         - scx_loader.service
+        - firewalld.service
       disabled:
         - rpm-ostree-countme.timer                 # Disables sending analytics/counting data to Fedora
       masked:

@@ -78,7 +78,7 @@ popd >/dev/null
 # Hier nur die Installation – aktiviert (scx_loader.service) und konfiguriert
 # (/etc/scx_loader.toml) wird im Recipe.
 dnf5 -y copr enable bieszczaders/kernel-cachyos-addons
-dnf5 -y install scx-scheds scx-tools-git
+dnf5 -y install scx-scheds scx-tools
 
 #####################################
 ##  5. Cleanup                     ##
