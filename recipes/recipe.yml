@@ -115,9 +115,9 @@ modules:
         - smartmontools                    # S.M.A.R.T. disk health monitoring utilities
         - solaar-udev                      # Access rules for Solaar (Logitech receiver manager)
         - gnome-keyring                    # Secrets and passwords for GNOME apps
-	- pipewire-pulseaudio              # PulseAudio compatibility (Firefox, Flatpaks)
-	- wireplumber                      # session manager for PipeWire
-	- xorg-x11-server-Xwayland         # for X11 apps on Wayland
+        - pipewire-pulseaudio              # PulseAudio compatibility (Firefox, Flatpaks)
+        - wireplumber			   # session manager for PipeWire
+        - xorg-x11-server-Xwayland	   # for X11 apps on Wayland
 
         ################################
         ##  System Tools & Utilities  ##
@@ -191,6 +191,8 @@ modules:
         - gnome-shell                      # The core user interface of the GNOME desktop
         - gnome-shell-extension-caffeine   # Extension to keep the screen awake
         - gnome-shell-extension-gsconnect  # KDE Connect implementation for GNOME
+        - gnome-shell-extension-appindicator # https://extensions.gnome.org/extension/615/appindicator-support/
+        - gnome-shell-extension-just-perfection # https://extensions.gnome.org/extension/615/appindicator-support/
         - gvfs-fuse                        # FUSE support for the GNOME Virtual File System
         - gvfs-mtp                         # Media Transfer Protocol support (mounts Android phones)
         - nautilus                         # GNOME's default file manager (Files)
@@ -297,8 +299,6 @@ modules:
   - type: gnome-extensions        
     install:
       # - 7065    # Tiling Shell:                                   https://extensions.gnome.org/extension/7065/tiling-shell/
-      - 615       # AppIndicator and KStatusNotifierItem Support:   https://extensions.gnome.org/extension/615/appindicator-support/
-      - 3843      # Just Perfection:                                https://extensions.gnome.org/extension/3843/just-perfection/
       - 5470      # Weather O’Clock:                                https://extensions.gnome.org/extension/5470/weather-oclock/
       - 5506    # User Avatar In Quick Settings:                    https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/
       # GSConnect, i.e. 1319 (installed as rpm, see above)          https://extensions.gnome.org/extension/1319/gsconnect/
@@ -337,16 +337,6 @@ modules:
       DEFAULT_HOSTNAME: unwritten
       VERSION_CODENAME: Next
 
-################################################
-##  Remove Fedora Flatpak repo – add Flathub  ##
-################################################
-
-  - type: script 
-    snippets:
-      - mkdir -p /etc/flatpak/remotes.d/
-      - curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo
-      - rm -f /usr/lib/systemd/system/flatpak-add-fedora-repos.service
-
 ########################
 ##  Systemd services  ##
 ########################
@@ -367,6 +357,7 @@ modules:
         - bootc-fetch-apply-updates.timer          # Stops automatic bootc fetches (manual control only)
         - bootc-fetch-apply-updates.service        # Stops automatic bootc updates
         - systemd-remount-fs.service               # Masks remount service (often unnecessary on OSTree)
+        - flatpak-add-fedora-repos.service   	   # No Fedora Flatpak repo, Flathub lives in files/system/etc/flatpak/remotes.d/flathub.flatpakrepo
     # user:
     #  enabled:
         # - some_service.service
