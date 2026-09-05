@@ -21,20 +21,25 @@ name: unwritten
 description: Unwritten 44 
 base-image: quay.io/fedora/fedora-bootc
 image-version: 44                          
-cosign-version: none                       # Container signing via cosign
-nushell-version: none                      # BlueBuild scripting during the build process
-blue-build-tag: none                       # BlueBuild won’t append its tags to this image
+cosign-version: none      # Container signing via cosign
+nushell-version: none     # BlueBuild scripting during the build process
+blue-build-tag: none      # BlueBuild won’t append its tags to this image
 
 modules:
   - type: dnf
     install:
       packages:
-        - fedora-logos                     # Provides base Fedora visual assets
-        - dnf5-plugins                     # Essential plugins for DNF5 (needed for COPR)
+        - fedora-logos   # Provides base Fedora visual assets
+        - dnf5-plugins   # Essential plugins for DNF5 (needed for COPR)
 
   - type: files
     files:
-      - source: system                     # Copies local ./system directory files over to /
+      - source: early    # For repo files only, as they have to exist before the installation
+        destination: /
+
+  - type: files
+    files:
+      - source: system    # Copies local ./system directory files over to /
         destination: /
 
 ########################################################
@@ -79,9 +84,13 @@ modules:
         - mesa-vulkan-drivers              # Vulkan drivers (RADV for AMD, ANV for Intel)
         - ocl-icd                          # OpenCL support for GPU compute tasks (Blender, etc.)
 
-  - type: script
-    snippets:
-      - dnf5 versionlock add libheif libva mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-va-drivers mesa-vulkan-drivers ocl-icd
+####################
+##  Version lock  ##
+####################
+  # Uncomment this section IF you add third party repos, such as rpmfusion; negativo 17 is set to priority 90 (sufficient)
+  #- type: script
+  #  snippets:
+  #    - dnf5 versionlock add libheif libva mesa-dri-drivers mesa-filesystem mesa-libEGL mesa-libGL mesa-libgbm mesa-va-drivers mesa-vulkan-drivers ocl-icd
 
 ################################################
 ##  Core Software, Utilities, and GNOME Base  ##
@@ -235,45 +244,6 @@ modules:
       - sudont.sh
 
 ####################
-##  niri section  ##
-####################
-
-  # Follow these instructions if you want to add niri:
-  # 1. Add this to the dnf ublue-os/packages list above: - mate-polkit
-  # 2. Uncomment the following:
-  
-  #- type: dnf
-  #  repos:
-  #    cleanup: true
-  #    copr:
-  #      - ublue-os/packages
-  #  install:
-  #    packages:
-  #      - niri
-  #      - niri-settings
-        
-  #- type: dnf
-  #  repos:
-  #    cleanup: true
-  #    copr:
-  #      - zhangyi6324/noctalia-shell
-  #  install:
-  #    packages:
-  #      - noctalia-shell
-  #      - quickshell
-    
-  # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
-  #- type: dnf
-  #  repos:
-  #    cleanup: true
-  #    copr:
-  #      - kylegospo/webapp-manager
-  #  install:
-  #    packages:
-  #      - webapp-manager
-
-
-####################
 ##  DNF removals  ##
 ####################
 
@@ -312,26 +282,6 @@ modules:
   - type: script
     snippets:
       - authselect disable-feature with-fingerprint
-
-
-################
-##  DeaDBeeF  ##
-################
-
-  # DeaDBeeF (make sure these are `the last` rpm packages to be installed):
-  - type: dnf
-    repos:
-      cleanup: true
-      nonfree: rpmfusion
-    install:
-      packages:
-        - deadbeef                         # Minimalist audio player for GNU/Linux
-        - deadbeef-plugins                 # Essential playback plugins for DeaDBeeF
-        
-  # Set DeaDBeeF to dark theme and delete mpris.so – mpris causes cursor micro stutters when switching tracks:
-  - type: script
-    scripts:
-      - deadbeef.sh
 
 ################
 ##  Stamp it  ##
@@ -556,3 +506,66 @@ modules:
 # Custom kernel signing:
   # - akmods-keygen@akmods-keygen.service
   # - akmods-keygen.target
+  
+####################
+##  niri section  ##
+####################
+
+  # Follow these instructions if you want to add niri:
+  # 1. Add this to the dnf ublue-os/packages list above: - mate-polkit
+  # 2. Put the entire niri section between 'Core Software, Utilities, and GNOME Base' and 'DNF removals'
+  # 3. Uncomment the following:
+  
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - ublue-os/packages
+  #  install:
+  #    packages:
+  #      - niri
+  #      - niri-settings
+        
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - zhangyi6324/noctalia-shell
+  #  install:
+  #    packages:
+  #      - noctalia-shell
+  #      - quickshell
+    
+  # Linux Mint's webapp-manager from Kyle Gospo’s (Bazzite) repo:
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    copr:
+  #      - kylegospo/webapp-manager
+  #  install:
+  #    packages:
+  #      - webapp-manager
+  
+################
+##  DeaDBeeF  ##
+################
+
+  # DeaDBeeF (make sure these are `the last` rpm packages to be installed):
+  #- type: dnf
+  #  repos:
+  #    cleanup: true
+  #    nonfree: rpmfusion
+  #  install:
+  #    packages:
+  #      - deadbeef                         # Minimalist audio player for GNU/Linux
+  #      - deadbeef-plugins                 # Essential playback plugins for DeaDBeeF
+        
+  # Set DeaDBeeF to dark theme and delete mpris.so – mpris causes cursor micro stutters when switching tracks:
+  #- type: script
+  #  scripts:
+  #    - deadbeef.sh
+  
+# for /files/deadbeef.sh:
+# #!/bin/bash
+# sed -i 's/^Exec=deadbeef %F$/Exec=env GTK_THEME=Adwaita:dark deadbeef %F/' /usr/share/applications/deadbeef.desktop
+# rm -f /usr/lib64/deadbeef/mpris.so
