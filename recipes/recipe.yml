@@ -351,9 +351,9 @@ modules:
         - gdm.service                              # Enables GNOME Display Manager on boot
         - systemd-timesyncd.service                # Enables lightweight network time sync
         - systemd-resolved.service                 # Enables local DNS resolution daemon
-        - rechunker-group-fix.service              # (Custom Script) Fixes OSTree chunking groups
         - me.proton.vpn.split_tunneling.service    # Enables ProtonVPN split tunneling backend
         - btrbk.timer                              # Enables btrfs backup timer routine
+	- scx_loader.service    		   # Loads sched-ext-Scheduler laden # sched-ext-Scheduler; Config in /etc/scx_loader.toml)
       disabled:
         - rpm-ostree-countme.timer                 # Disables sending analytics/counting data to Fedora
       masked:
@@ -394,9 +394,6 @@ modules:
     snippets:
       - rm -rf /usr/share/doc
       - rm -rf /usr/src
-      - rpm --erase --nodeps kernel-cachyos-devel || true
-      - rpm --erase --nodeps kernel-cachyos-lts-devel || true
-      - rm -f /tmp/ltsbuild
       - dnf5 versionlock clear
       - dnf5 clean all
 
