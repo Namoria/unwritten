@@ -225,7 +225,7 @@ modules:
         - firefox                          # The Mozilla Firefox web browser
 
   - type: script
-     snippets:
+    snippets:
       - 'dnf5 -y install f$(rpm -E %fedora)-backgrounds-gnome'   # Wallpapers passend zur Fedora-Version
 
   - type: script
