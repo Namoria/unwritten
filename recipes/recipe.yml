@@ -20,7 +20,7 @@
 name: unwritten
 description: Unwritten 44 
 base-image: quay.io/fedora/fedora-bootc
-image-version: 44                          # When updating: also update f44-backgrounds-gnome (see blow)
+image-version: 44                          
 cosign-version: none                       # Container signing via cosign
 nushell-version: none                      # BlueBuild scripting during the build process
 blue-build-tag: none                       # BlueBuild won’t append its tags to this image
@@ -66,7 +66,7 @@ modules:
   
   - type: dnf
     install:
-      skip-unavailable: true
+      # skip-unavailable: true
       packages:
         - libheif                          # Support for Apple HEIC photo format
         - libva                            # Core library for hardware video acceleration (VA-API)
@@ -114,6 +114,10 @@ modules:
         - sane-backends-drivers-scanners   # Universal scanner drivers for Linux
         - smartmontools                    # S.M.A.R.T. disk health monitoring utilities
         - solaar-udev                      # Access rules for Solaar (Logitech receiver manager)
+        - gnome-keyring                    # Secrets and passwords for GNOME apps
+	- pipewire-pulseaudio              # PulseAudio compatibility (Firefox, Flatpaks)
+	- wireplumber                      # session manager for PipeWire
+	- xorg-x11-server-Xwayland         # for X11 apps on Wayland
 
         ################################
         ##  System Tools & Utilities  ##
@@ -176,7 +180,6 @@ modules:
         ##  GNOME Components  ##
         ########################
         
-        - f44-backgrounds-gnome            # Standard Fedora 44 desktop wallpapers
         - gdm                              # GNOME Display Manager (the login screen)
         - glycin-thumbnailer               # Sandboxed image thumbnailer used by modern GNOME apps
         - gnome-bluetooth                  # Bluetooth pairing and management tools for GNOME
@@ -218,6 +221,10 @@ modules:
         #########################
         
         - firefox                          # The Mozilla Firefox web browser
+
+  - type: script
+     snippets:
+      - 'dnf5 -y install f$(rpm -E %fedora)-backgrounds-gnome'   # Wallpapers passend zur Fedora-Version
 
   - type: script
     scripts:
