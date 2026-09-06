@@ -162,6 +162,7 @@ modules:
         - wget                             # Command-line utility for downloading files from the web
         - wl-clipboard                     # Command-line copy/paste utilities for Wayland
         - xwininfo                         # Window information utility for legacy X11 applications
+        - yadm				   # Git for your home directory
         - zram-generator-defaults          # Config to auto-generate a compressed RAM disk (zram)
         - zstd                             # Zstandard fast real-time compression algorithm
         - zsh                              # The Z shell, a highly customizable bash alternative
