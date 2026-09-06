@@ -154,6 +154,7 @@ modules:
         - micro                            # Modern and intuitive terminal-based text editor
         - openssl                          # Toolkit for TLS/SSL cryptographic protocols
         - pv                               # Pipe Viewer, monitors the progress of data in pipelines
+        - rsync				   # Copy files
         - symlinks                         # A tiny utility to find and fix broken symlinks
         - systemd-container                # Tools for managing local containers (machinectl)
         - systemd-oomd-defaults            # Out-of-memory daemon default configuration
